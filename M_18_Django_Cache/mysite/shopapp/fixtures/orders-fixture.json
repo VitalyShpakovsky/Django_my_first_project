@@ -1,0 +1,44 @@
+[
+  {
+    "model": "shopapp.order",
+    "pk": 1,
+    "fields": {
+      "delivery_address": "city Minsk, st. Pobeda, h. 45 r. 9",
+      "promocode": "May",
+      "created_at": "2023-05-24T15:56:01.440Z",
+      "user": 4,
+      "products": [
+        1
+      ]
+    }
+  },
+  {
+    "model": "shopapp.order",
+    "pk": 2,
+    "fields": {
+      "delivery_address": "city Pobeda",
+      "promocode": "may",
+      "created_at": "2023-06-10T18:13:51.896Z",
+      "user": 4,
+      "products": [
+        1,
+        2,
+        3,
+        4
+      ]
+    }
+  },
+  {
+    "model": "shopapp.order",
+    "pk": 4,
+    "fields": {
+      "delivery_address": "city Minsk st Frunse, h. 12, apt. 89",
+      "promocode": "April",
+      "created_at": "2023-06-10T18:17:47.789Z",
+      "user": 4,
+      "products": [
+        1
+      ]
+    }
+  }
+]

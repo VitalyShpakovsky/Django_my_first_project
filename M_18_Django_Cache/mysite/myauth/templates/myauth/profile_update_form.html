@@ -1,0 +1,24 @@
+{% extends "myauth/base.html" %}
+
+{% block tittle %}
+  Update avatar
+{% endblock %}
+
+{% block body %}
+  <h1> Update an avatar </h1>
+    <div>
+        <form method="post" enctype="multipart/form-data">
+            {% csrf_token %}
+            {{ form.as_p }}
+            <button type="submit">
+                Update
+            </button>
+        </form>
+    </div>
+    <div>
+        <a href="{% url 'accounts:profile_detail' pk=object.pk %}"> Back to profile </a>
+    </div>
+
+{% endblock %}
+
+

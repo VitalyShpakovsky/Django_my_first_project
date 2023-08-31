@@ -1,0 +1,48 @@
+{% extends 'shopapp/base.html' %}
+{% load cache %}
+
+{% block title %}
+    Order List
+{% endblock %}
+
+{% block body %}
+{% if request.user.is_authenticated %}
+        <div>
+            <h2>Info User</h2>
+            <p>Username: {{ owner.username}}</p>
+            <p>First name: {{ owner.first_name}}</p>
+            <p>Last name: {{ owner.last_name}}</p>
+            <p>Email: {{ owner.email}}</p>
+            <p>Bio: {{ owner.profile.bio }}</p>
+        </div>
+        {% if object_list %}
+            <h2>Пользователь {{ owner.username }} выполнил следующие заказы:</h2>
+            <div>
+                {% cache 100 order_list owner.id %}
+                {% for order in object_list %}
+                    <div>
+                        <p>Order #{{order.pk}}</p>
+                        <p>Order by: {% firstof order.user.first_name order.user.username %}</p>
+                        <p>Delivery_address: {{ order.delivery_address }}</p>
+                        <p>Promocode: {{ order.promocode }}</p>
+                    </div>
+                    <div>
+                        Products in order
+                        <ul>
+                            {% for product in order.products.all %}
+                            <li> {{ product.name }} for $ {{ product.price }} </li>
+                            {% endfor %}
+                        </ul>
+                    </div>
+                    <br>
+                {% endfor %}
+                {% endcache %}
+            </div>
+        {% else %}
+        <div>У пользователя {{ owner.username }} ещё нет заказов</div>
+        {% endif %}
+
+{% else %}
+    <p>User is anonymous</p>
+{% endif %}
+{% endblock %}

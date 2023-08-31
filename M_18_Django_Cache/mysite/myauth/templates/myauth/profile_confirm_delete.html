@@ -1,0 +1,21 @@
+{% extends "myauth/base.html" %}
+
+{% block title %}
+    Delete Profile {{ object.pk }}
+{% endblock %}
+
+{% block body %}
+    <h1>Are you sure you want to delete profile {{ object.pk }}?</h1>
+    <br>
+    <div>
+        <a href="{% url 'accounts:profile_detail' pk=object.pk %}">Back to profile</a>
+    </div>
+    <br>
+    <div>
+        <form method="post">
+            {% csrf_token%}
+            {{ form.as_p}}
+            <button type="submit">Delete</button>
+        </form>
+    </div>
+{% endblock %}

@@ -1,0 +1,26 @@
+{% extends "myauth/base.html" %}
+
+{% block title %}
+    Create profile
+{% endblock %}
+
+{% block body %}
+    <h1>
+        Create a new profile
+    </h1>
+
+    <div>
+        <form method="post" enctype="multipart/form-data">
+            {% csrf_token %}
+
+            {{ form.as_p }}
+
+            <button type="submit">
+                Create
+            </button>
+        </form>
+    </div>
+   <div>
+        <a href="{% url 'accounts:about-me' %}"> About Me</a>
+    </div>
+{% endblock %}

@@ -1,0 +1,46 @@
+{% extends "myauth/base.html" %}
+
+{% block tittle %}
+  About Me
+{% endblock %}
+
+{% block body %}
+  <h1>User Info</h1>
+  {% if user.is_authenticated %}
+    {% if user.profile.pk %}
+      {% if user.profile.avatar %}
+        <div><img src="{{ user.profile.avatar.url }}" alt="{{ user.profile.avatar.name }}"></div>
+      {% else %}
+        <div>
+          <p>Not avatar</p>
+        </div>
+      {% endif %}
+      <div>
+        <a href=" {% url 'accounts:avatar_update' pk=user.profile.pk %}">Update avatar</a>
+      </div>
+      <div>
+        <h2>Detail</h2>
+          <p>Username: {{ user.username}}</p>
+          <p>First name: {{ user.first_name}}</p>
+          <p>Last name: {{ user.last_name}}</p>
+          <p>Email: {{ user.email}}</p>
+          <p>Bio: {{ user.profile.bio }}</p>
+      </div>
+      <div>
+        <a href=" {% url 'accounts:profile_update' %}">Update profile</a>
+      </div>
+    {% else %}
+      <div>
+        <h2> User not profile </h2>
+          <p><a href="{% url 'accounts:profile_create' %}"> Create a profile </a></p>
+          <p></p>
+      </div>
+    {% endif %}
+  {% else %}
+    <h2>User is anonymous</h2>
+  {% endif %}
+  <div>
+    <p></p>
+    <p><a href=" {% url 'accounts:profile_list' %}">Back to profiles list</a></p>
+  </div>
+{% endblock %}
