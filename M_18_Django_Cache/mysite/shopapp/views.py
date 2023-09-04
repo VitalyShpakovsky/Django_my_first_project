@@ -27,6 +27,8 @@ from django_filters.rest_framework import DjangoFilterBackend
 from rest_framework.renderers import JSONRenderer
 from .serializers import ProductSerializer, OrderSerializer
 
+from ..mysite.settings import ALLOWED_HOSTS
+
 
 log = logging.getLogger(__name__)
 
@@ -81,25 +83,25 @@ class OrderViewSet(ModelViewSet):
 def shop_index(request: HttpRequest):
     """Функция отображения главной страницы интернет-магазина."""
     urls = [
-        "http://127.0.0.1:8000/admin/",
-        "http://127.0.0.1:8000/shop/groups/",
-        "http://127.0.0.1:8000/shop/order/",
-        "http://127.0.0.1:8000/shop/products/",
-        "http://127.0.0.1:8000/shop/products/create/",
-        "http://127.0.0.1:8000/shop/order/create/",
-        "http://127.0.0.1:8000/accounts/login/",
-        "http://127.0.0.1:8000/accounts/profiles/",
-        "http://127.0.0.1:8000/accounts/about-me/",
-        "http://127.0.0.1:8000/api/",
-        "http://127.0.0.1:8000/ru/api/products/",
-        "http://127.0.0.1:8000/ru/api/orders/",
-        "http://127.0.0.1:8000/api/schema/swagger/",
-        "http://127.0.0.1:8000/api/schema/redoc/",
-        "http://127.0.0.1:8000/blogapp/article/",
-        "http://127.0.0.1:8000/sitemap.xml",
-        "http://127.0.0.1:8000/ru/shop/products/latest/feed/",
-        "http://127.0.0.1:8000/ru/users/1/orders/",
-        "http://127.0.0.1:8000/ru/users/1/orders/export/",
+        "http://195.80.51.79:8000/admin/",
+        "http://195.80.51.79:8000/shop/groups/",
+        "http://195.80.51.79:8000/shop/order/",
+        "http://195.80.51.79:8000/shop/products/",
+        "http://195.80.51.79:8000/shop/products/create/",
+        "http://195.80.51.79:8000/shop/order/create/",
+        "http://195.80.51.79:8000/accounts/login/",
+        "http://195.80.51.79:8000/accounts/profiles/",
+        "http://195.80.51.79:8000/accounts/about-me/",
+        "http://195.80.51.79:8000/api/",
+        "http://195.80.51.79:8000/ru/api/products/",
+        "http://195.80.51.79:8000/ru/api/orders/",
+        "http://195.80.51.79:8000/api/schema/swagger/",
+        "http://195.80.51.79:8000/api/schema/redoc/",
+        "http://195.80.51.79:8000/blogapp/article/",
+        "http://195.80.51.79:8000/sitemap.xml",
+        "http://195.80.51.79:8000/ru/shop/products/latest/feed/",
+        "http://195.80.51.79:8000/ru/users/1/orders/",
+        "http://195.80.51.79:8000/ru/users/1/orders/export/",
 
     ]
     context = {
